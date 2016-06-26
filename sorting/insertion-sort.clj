@@ -5,21 +5,21 @@
 (defn insertion-sort
   [vec]
   "sorts the given `vec` using insertion sort algorithm"
-  (loop [sortedVec []
+  (loop [sorted-vec []
          item (first vec)
-         pendingInserts (rest vec)]
+         pending-inserts (rest vec)]
     (if (nil? item)
-      sortedVec
-      (recur (insert sortedVec item) (first pendingInserts) (rest pendingInserts)))))
+      sorted-vec
+      (recur (insert sorted-vec item) (first pending-inserts) (rest pending-inserts)))))
 
 ;; the tail recursive insert function
 (defn insert
   [vec item]
   "inserts the `item` into the sorted vector `vec` in its right position"
-  (loop [inVec vec
+  (loop [in-vec vec
          el item
-         outVec []]
+         out-vec []]
     (cond
-      (empty? inVec) (conj outVec el)
-      (> (first inVec) el) (into [] (concat (conj outVec el) inVec))
-      :else (recur (rest inVec) el (conj outVec (first inVec))))))
+      (empty? in-vec) (conj out-vec el)
+      (> (first in-vec) el) (into [] (concat (conj out-vec el) in-vec))
+      :else (recur (rest in-vec) el (conj out-vec (first in-vec))))))
