@@ -18,7 +18,7 @@
   "finds the index of a minimum value in given vector `vec`"
   (if (empty? vec) -1
       (loop [min-idx start-idx
-             i start-idx]
+             i (+ start-idx 1)]
         (if (nil? (get vec i)) min-idx
             (recur (if (> (get vec min-idx) (get vec i)) i min-idx)
                    (inc i))))))
